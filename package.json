@@ -1,0 +1,32 @@
+{
+  "name": "jina-study",
+  "version": "1.0.0",
+  "description": "Jina's exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonjieun/jina-study.git"
+  },
+  "author": "jina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wonjieun/jina-study/issues"
+  },
+  "homepage": "https://github.com/wonjieun/jina-study#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "eslint": "^8.5.0",
+    "eslint-plugin-react": "^7.28.0",
+    "webpack": "^5.65.0"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
