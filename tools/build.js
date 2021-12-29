@@ -1,4 +1,5 @@
 /** build script */
+import run from './run';
 async function clean() {
   // initialize build directory
 }
@@ -12,9 +13,9 @@ async function bundle() {
 }
 
 async function build() {
-  await clean();
-  await copy();
-  await bundle();
+  await run(clean);
+  await run(copy);
+  await run(bundle);
 }
 
 export default build;
