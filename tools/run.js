@@ -3,21 +3,22 @@ function format(time) {
 }
 
 async function run(fn, options) {
+  const task = typeof fn.default === 'undefined' ? fn : fn.default;
   const start = new Date();
-  console.log(`[${format(start)}] Starting '${fn.name}'...`);
+  console.log(`[${format(start)}] Starting '${task.name}'...`);
 
   await fn(options);
 
   const end = new Date();
   const time = end.getTime() - start.getTime();
-  console.log(`[${format(end)}] Finished '${fn.name}' after ${time} ms`);
+  console.log(`[${format(end)}] Finished '${task.name}' after ${time} ms`);
 }
 
 // ! Deprecated: process.mainModule [https://nodejs.org/api/process.html#process_process_mainmodule]
 if (require.main === module && process.argv.length > 2) {
   delete require.cache[require.main.filename];
-  const module = process.argv[2];
-  run(require(`./${module}.js`)).catch(err => console.error(err.stack));
+  const module = require(`./${process.argv[2]}.js`).default;
+  run(module).catch(err => console.error(err.stack));
 }
 
 export default run;

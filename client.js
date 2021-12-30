@@ -1,7 +1,7 @@
-import 'babel-core/register';
+import '@babel/register';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './components/App.jsx';
 
 function run() {
   // to hydrate a container whose HTML contents were rendered by ReactDOMServer(in server.js)

@@ -1,9 +1,9 @@
-import 'babel-core/register';
+import '@babel/register';
 import path from 'path';
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import App from './components/App';
+import App from './components/App.jsx';
 
 const server = express();
 const port = process.env.PORT || 3000;

@@ -4,7 +4,8 @@
   "description": "Jina's exercise",
   "main": "index.js",
   "scripts": {
-    "build": "babel-node tools/run build"
+    "build": "babel-node tools/run build",
+    "serve": "npm run build && node build/server"
   },
   "repository": {
     "type": "git",
@@ -22,10 +23,17 @@
     "@babel/node": "^7.16.5",
     "@babel/plugin-transform-runtime": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "@babel/register": "^7.16.5",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
+    "babel-loader": "^8.2.3",
+    "del": "^6.0.0",
     "eslint": "^8.5.0",
     "eslint-plugin-react": "^7.28.0",
+    "extend": "^3.0.2",
+    "gaze": "^1.1.3",
+    "ncp": "^2.0.0",
     "webpack": "^5.65.0"
   },
   "dependencies": {

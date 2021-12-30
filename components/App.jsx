@@ -16,16 +16,16 @@ export default class App extends Component {
   }
 
   tick() {
-    this.setState({ time: new Date() });
+    this.setState({ time: new Date().toLocaleString() });
   }
 
   render() {
-    const time = this.state.time;
+    const { time } = this.state;
 
     return (
       <div>
         <h1>Sample Application</h1>
-        <p>Current time is { time }</p>
+        <p>Current time is {time}</p>
       </div>
     )
   }
