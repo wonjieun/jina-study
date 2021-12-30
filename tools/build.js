@@ -1,5 +1,6 @@
 /** build script */
 import run from './run';
+
 async function clean() {
   // initialize build directory
 }
