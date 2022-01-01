@@ -1,4 +1,3 @@
-import '@babel/register';
 import path from 'path';
 import express from 'express';
 import React from 'react';
@@ -12,6 +11,7 @@ const port = process.env.PORT || 3000;
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.get('*', (req, res) => {
+  console.log('server')
   const title = 'Universal web application';
   const body = ReactDOMServer.renderToString(<App />);
   const html = `<!doctype html>

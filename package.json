@@ -2,7 +2,6 @@
   "name": "jina-study",
   "version": "1.0.0",
   "description": "Jina's exercise",
-  "main": "index.js",
   "scripts": {
     "build": "babel-node tools/run build",
     "serve": "npm run build && node build/server"
@@ -24,7 +23,6 @@
     "@babel/plugin-transform-runtime": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
-    "@babel/register": "^7.16.5",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "babel-loader": "^8.2.3",
