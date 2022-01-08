@@ -14,8 +14,9 @@ const common = {
         test: /\.js$|jsx/,
         include: [
           path.join(__dirname, '../components'),
+          path.join(__dirname, '../routes'),
           path.join(__dirname, '../client.js'),
-          path.join(__dirname, '../server.js')
+          path.join(__dirname, '../server.js'),
         ],
         loader: 'babel-loader'
       },

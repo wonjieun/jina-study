@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
+import Router from './core/Router.js';
 
 function run() {
+  const component = Router.match({
+    path: window.location.pathname
+  })
   // to hydrate a container whose HTML contents were rendered by ReactDOMServer(in server.js)
-  ReactDOM.hydrate(<App />, document.getElementById('app'));
+  ReactDOM.hydrate(component, document.getElementById('app'));
 }
 
 const loadedStates = ['complete', 'loaded', 'interactive'];

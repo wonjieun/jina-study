@@ -3,6 +3,7 @@ import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import App from './components/App.jsx';
+import Router from './core/Router';
 
 const server = express();
 const port = process.env.PORT || 3000;
@@ -11,9 +12,9 @@ const port = process.env.PORT || 3000;
 server.use(express.static(path.join(__dirname, 'public')));
 
 server.get('*', (req, res) => {
-  console.log('server')
   const title = 'Universal web application';
-  const body = ReactDOMServer.renderToString(<App />);
+  const component = Router.match(req);
+  const body = ReactDOMServer.renderToString(component);
   const html = `<!doctype html>
   <html>
     <head>
