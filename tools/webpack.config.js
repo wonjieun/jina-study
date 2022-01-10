@@ -27,17 +27,17 @@ const common = {
 const client = extend(true, {}, common, {
   entry: path.join(__dirname, '../client.js'),
   output: {
+    filename: 'client.js',
     publicPath: '/',
-    path: path.join(__dirname, '../build/public'),
-    filename: 'client.js'
+    path: path.join(__dirname, '../dist/public'),
   }
 });
 
 const server = extend(true, {}, common, {
   entry: path.join(__dirname, '../server.js'),
   output: {
-    path: path.join(__dirname, '../build'),
     filename: 'server.js',
+    path: path.join(__dirname, '../dist'),
     libraryTarget: 'commonjs2'
   },
   target: 'node',

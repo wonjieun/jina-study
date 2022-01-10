@@ -8,16 +8,16 @@ import run from './run';
 import webpackConfig from './webpack.config';
 
 async function clean() {
-  // initialize build directory
-  await del(['build/*']);
+  // initialize dist directory
+  await del(['dist/*']);
 }
 
 async function copy() {
-  // static files copy to build directory
+  // static files copy to dist directory
   const promiseNcp = util.promisify(ncp);
-  if (!fs.existsSync('build')) fs.mkdirSync('build');
-  await promiseNcp('public', 'build/public');
-  await promiseNcp('package.json', 'build/package.json');
+  if (!fs.existsSync('dist')) fs.mkdirSync('dist');
+  await promiseNcp('public', 'dist/public');
+  await promiseNcp('package.json', 'dist/package.json');
 }
 
 async function bundle({ watch }) {

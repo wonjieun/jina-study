@@ -7,14 +7,14 @@ import run from './run';
 
 async function serve() {
   const watch = true;
-  const app = path.join(__dirname, '../build/server.js');
+  const app = path.join(__dirname, '../dist/server.js');
   const promiseGaze = util.promisify(gaze);
   await run(build, { watch });
   await new Promise((resolve, reject) => {
     function start() {
       const server = cp.spawn(
         'node',
-        [path.join(__dirname, '../build/server.js')],
+        [path.join(__dirname, '../dist/server.js')],
         {
           env: Object.assign({ NODE_ENV: 'development' }, process.env),
           silent: false
@@ -37,7 +37,7 @@ async function serve() {
     let server = start();
 
     if (watch) {
-      promiseGaze('build/server.js').then((watcher) => {
+      promiseGaze('dist/server.js').then((watcher) => {
         watcher.on('changed', () => {
           server.kill('SIGTERM');
           server = start();
