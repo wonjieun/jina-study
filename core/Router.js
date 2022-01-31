@@ -1,6 +1,9 @@
+import Home from '../routes/Home.jsx';
+import NotFound from '../routes/NotFound.jsx';
+
 const routes = [
-  require('../routes/Home.jsx').default,
-  require('../routes/NotFound.jsx').default
+  Home,
+  NotFound
 ];
 
 const router = {
