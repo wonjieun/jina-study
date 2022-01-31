@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Jina's exercise",
   "scripts": {
-    "build": "babel-node tools/run build",
+    "build": "babel-node scripts/run build",
     "serve": "npm run build && node dist/server"
   },
   "repository": {
