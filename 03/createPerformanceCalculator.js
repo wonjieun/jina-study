@@ -1,5 +1,5 @@
-import TragedyCalculator from './TragedyCalculator.js';
-import ComedyCalculator from './ComedyCalculator.js';
+import TragedyCalculator from './module/TragedyCalculator.js';
+import ComedyCalculator from './module/ComedyCalculator.js';
 
 export default function createPerformanceCalculator(aPerformance, aPlay) {
   switch (aPlay.type) {
