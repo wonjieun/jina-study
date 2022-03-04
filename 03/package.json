@@ -1,12 +1,10 @@
 {
   "name": "03",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
   "scripts": {
-    "start": "node --experimental-json-modules statement.js",
+    "start": "node --experimental-json-modules --trace-warnings statement.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "ISC"
 }
