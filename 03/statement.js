@@ -2,10 +2,11 @@ import invoices from "./invoices.json";
 import plays from "./plays.json";
 
 function statement(invoice, plays) {
-  return renderPlainText(invoice, plays);
+  const statement = {};
+  return renderPlainText(statement, invoice, plays);
 }
 
-function renderPlainText(invoice, plays) {
+function renderPlainText(data, invoice, plays) {
   let result = `\n청구 내역 (고객명: ${invoice.customer})\n`;
   for (let perf of invoice.performances) {
     result +=
