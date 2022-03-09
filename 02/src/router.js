@@ -2,15 +2,16 @@ import { routes } from './routes/index.js';
 
 const Router = (path) => {
   const route = routes.find(route => route.path === path);
+  const errorRoute = routes.find(route => route.path === '/404');
 
   if (!route) {
-    return routes.find(route => route.path === '/404').action();
+    return errorRoute.action();
   }
 
   try {
     return route.action();
   } catch (error) {
-    return routes.find(x => x.path === '/404').action();
+    return errorRoute.action();
   }
 }
 
