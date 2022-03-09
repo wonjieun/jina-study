@@ -9,7 +9,7 @@ export const serverRenderer = (RootComponent, state) => `
       </script>
     </head>
     <body>
-      <div id="app">${RootComponent}</div>
+      <main id="app">${RootComponent}</main>
       <script src="./src/main.js" type="module"></script>
     </body>
   </html>
