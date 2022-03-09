@@ -1,9 +1,10 @@
-import { LoginPage } from './pages/Login.js';
+import Login from './routes/Login.js';
 import { store } from './store/index.js';
 
 const render = () => {
   const $app = document.querySelector('#app');
-  $app.innerHTML = LoginPage();
+  $app.innerHTML = Login.action();
+
   const loginBtn = $app.querySelector('.login-btn');
   loginBtn.addEventListener('click', () => {
     const userId = $app.querySelector('#user-id').value;
