@@ -1,9 +1,9 @@
-import Login from './routes/Login.js';
+import Router from './router.js';
 import { store } from './store/index.js';
 
 const render = () => {
   const $app = document.querySelector('#app');
-  $app.innerHTML = Login.action();
+  $app.innerHTML = Router(window.location.pathname);
 
   const loginBtn = $app.querySelector('.login-btn');
   loginBtn.addEventListener('click', () => {
