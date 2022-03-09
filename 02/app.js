@@ -1,13 +1,13 @@
 import express from 'express';
-import Login from './src/routes/Login.js';
+import Router from './src/router.js';
 import { serverRenderer } from './src/serverRenderer.js';
 
 const app = express();
 
 app.use('/src', express.static('./src'));
 
-app.get('/login', (req, res) => {
-  res.send(serverRenderer(Login.action()));
+app.get('/*', (req, res) => {
+  res.send(serverRenderer(Router(req.path)));
 });
 
 app.listen(3000, () => {
