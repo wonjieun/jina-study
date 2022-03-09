@@ -5,10 +5,6 @@ export const UserList = () => `
   <ol>
     ${store.state.userList.map(UserItem).join('')}
   </ol>
-`
+`;
 
-export const UserItem = ({ id, userId, password }) => `
-  <li>
-    ${userId} | ${password}
-  </li>
-`
+export const UserItem = ({ id, userId, password }) => `<li>${userId} | ${password}</li>`;
