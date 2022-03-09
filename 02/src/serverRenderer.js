@@ -5,7 +5,7 @@ export const serverRenderer = (RootComponent, state) => `
       <meta charset="UTF-8">
       <title>Server Side Rendering</title>
       <script>
-        window.state = ${JSON.stringify(state)}
+        window.$state = ${JSON.stringify(state)}
       </script>
     </head>
     <body>

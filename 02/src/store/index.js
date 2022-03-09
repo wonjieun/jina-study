@@ -1,5 +1,5 @@
 export const store = {
-  state: globalThis.state || {
+  state: globalThis.$state || {
     userId: '',
     password: '',
     userList: [
