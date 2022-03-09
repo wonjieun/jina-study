@@ -12,6 +12,12 @@ export const store = {
   },
   setState (newState) {
     this.state = { ...this.state, ...newState };
+
+    fetch('/api/state', {
+      method: 'put',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(this.state),
+    });
   },
   addUserItem(userItem) {
     const newUserItem = { id: this.state.userList.length + 1, ...userItem };
