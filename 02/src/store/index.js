@@ -1,5 +1,5 @@
 export const store = {
-  state: {
+  state: globalThis.state || {
     userId: '',
     password: '',
     userList: [
@@ -12,6 +12,5 @@ export const store = {
   addUserItem(userItem) {
     const newUserItem = { id: this.state.userList.length + 1, ...userItem }
     this.setState({ userList: [...this.state.userList, newUserItem] });
-    console.log(this.state)
   }
 };
