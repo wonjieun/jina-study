@@ -1,36 +1,60 @@
-/**
- * this
- * JavaScript에서 모든 function은 this를 가진다.
- * 호출하는 상황에 따라 this가 가리키는 Object가 달라진다.
- * 전역 실행 컨텍스트를 만들고 함수가 실행될 때 함수 실행 컨텍스트를 만든다.
- * 
- * 
- * 1. new 바인딩 - new 키워드로 생성한 객체에 바인딩
- *               - 1. 새로운 객체 생성 2. 함수 코드 실행 3. 새로 생성한 객체 반환
- * 2. 명시적 - bind, call, apply로 명시적으로 바인딩
- *           - call(this, arg1, arg2, ...)
- *           - apply(this, args)
- *           - Function.bind(this, arg1, arg2, ...)
- * 3. 암시적 - 점 연산자(.) 또는 대괄호 연산자를 통한 바인딩
- *          - (.)점 연산을 통해 접근하는 함수는 바로 호출하지 않고서는 암시적 바인딩 할 수 없다
- * 4. 기본 - 함수를 단독 호출할 경우
- *          - 브라우저 환경에서 strict mode: undefined, non-strict mode: Window
- *          - Node 환경에서 global 객체
- * 
- * 유효한 JavaScript 식별자가 아닌 이름(공백이나 붙임표, 숫자로 시작하는 이름)을 가진 속성은 대괄호 표기법으로만 접근할 수 있습니다.
- * 메서드(method)는 객체와 연관된 함수, 다른 말로 하자면 객체 속성 중 함수인 것을 말합니다. 메서드는 다른 함수와 똑같이 정의하지만, 객체 속성에 할당한다는 점이 다릅니다.
- * 함수 호이스팅은 오직 함수 선언과 함께 작동하고, 함수 표현식에서는 동작하지 않습니다.
- * 
+/* NOTE this
+JavaScript에서 모든 function은 this를 가진다.
+호출하는 상황에 따라 this가 가리키는 Object가 달라진다.
+전역 실행 컨텍스트를 만들고 함수가 실행될 때 함수 실행 컨텍스트를 만든다.
+
+1. new
+- new 키워드로 생성한 객체에 바인딩
+- 1. 새로운 객체 생성 2. 함수 코드 실행 3. 새로 생성한 객체 반환
+2. 명시적
+- bind, call, apply로 명시적으로 바인딩
+- call(this, arg1, arg2, ...)
+- apply(this, args)
+- Function.bind(this, arg1, arg2, ...)
+3. 암시적
+- 점 연산자(.) 또는 대괄호 연산자를 통한 바인딩
+- (.)점 연산을 통해 접근하는 함수는 바로 호출하지 않고서는 암시적 바인딩 할 수 없다.
+4. 기본
+- 함수를 단독 호출할 경우
+- 브라우저 환경에서 strict mode: undefined, non-strict mode: Window
+- Node 환경에서 global 객체
+
+유효한 JavaScript 식별자가 아닌 이름(공백이나 붙임표, 숫자로 시작하는 이름)을 가진 속성은 대괄호 표기법으로만 접근할 수 있다.
+메서드(method)는 객체와 연관된 함수, 다른 말로 하자면 객체 속성 중 함수이다.
+메서드는 다른 함수와 똑같이 정의하지만, 객체 속성에 할당한다는 점이 다르다.
+함수 호이스팅은 오직 함수 선언과 함께 작동하고, 함수 표현식에서는 동작하지 않는다.
  */
 
-// 기본 바인딩
+// NOTE 기본 바인딩
 'use strict';
 const fdfdf = function () {
   console.log(this);
 }
 // fdfdf();
 
-// 암시적 바인딩
+// NOTE 명시적 바인딩
+const pizza = {
+  shape: '🍕'
+}
+const frenchFries = {
+  shape: '🍟'
+}
+
+function whatIsLookLike(drink = '🍺') {
+  return this.shape + drink;
+}
+
+// 함수 호출
+const result = whatIsLookLike.call(pizza);
+// const result = whatIsLookLike.apply(pizza);
+// console.log(result); // > 🍕🍺
+// 새로운 함수 생성
+const result1 = whatIsLookLike.bind(pizza, '🥤'); // > 🍕🥤
+const result2 = result1.bind(pizza, '🥛'); // > 🍕🥤
+// console.log(result1());
+// console.log(result2());
+
+// NOTE 암시적 바인딩
 const obj = {
   name: 'jina',
   getName() {
@@ -43,7 +67,7 @@ function showReturnValue(cb) { // 참조 타입이 아닌 cb 프로퍼티 값(�
 }
 // showReturnValue(obj.getName);
 
-// new 바인딩
+// NOTE new 바인딩
 const myClassThis = function () {
   this.name = 'dew';
   this.introduce = 'hello';
@@ -65,25 +89,25 @@ const someone = {
 // 객체 안에 this는 자기자신을 가리킴
 
 // someone이 점 연산자를 통해 호출
-// someone.whoAmI(); // -> someone
+// someone.whoAmI(); // > someone
 
 const myWhoAmI = someone.whoAmI;
 // Window가 호출
-// myWhoAmI(); // -> Window
+// myWhoAmI(); // > Window
 
 const btn = document.getElementById('btn');
 // btn이 호출
-btn.addEventListener('click', someone.whoAmI); // -> Button
+btn.addEventListener('click', someone.whoAmI); // > Button
 // = btn.addEventListener('click', myWhoAmI);
 
 // bind() 함수를 이용하여 this를 명시적으로 바인딩
 const bindedWhoAmI = myWhoAmI.bind(someone);
-// bindedWhoAmI(); // -> someone
-btn.addEventListener('click', bindedWhoAmI); // -> someone
+// bindedWhoAmI(); // > someone
+btn.addEventListener('click', bindedWhoAmI); // > someone
 
 // ========================================================================
 
-/*
+/* NOTE Arrow Function
 ES6(ES2015)에 추가된 Arrow Function에 없는 것
 1. 함수 이름
 2. this
@@ -100,13 +124,13 @@ const myObj = {
   setCounter: function () {
     console.log(this.count);
     btn.addEventListener('click', function () {
-      console.log(this); // -> Button
+      console.log(this); // > Button
     });
   },
   setCounterThisBind: function () {
     console.log(this.count);
     btn.addEventListener('click', (function () {
-      console.log(this); // -> myObj
+      console.log(this); // > myObj
     }).bind(this));
   },
   setCounterArrow: function () {
@@ -162,5 +186,5 @@ const objectTest = {
     console.log(this);
   }
 }
-// objectTest.hello(); // -> objectTest
-// objectTest.hello2(); // -> global object
+// objectTest.hello(); // > objectTest
+// objectTest.hello2(); // > global object
