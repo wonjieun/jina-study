@@ -26,17 +26,20 @@ var LikeButton = function (_React$Component) {
       var _this2 = this;
 
       if (this.state.liked) {
-        return '좋아용을 눌렀어용~';
+        return '좋아용을 눌렀어용~👍🏼';
       }
 
-      return e('button', { onClick: function onClick() {
-          return _this2.setState({ liked: true });
-        } }, '좋아용');
+      return React.createElement(
+        'button',
+        { onClick: function onClick() {
+            return _this2.setState({ liked: true });
+          } },
+        '\uC88B\uC544\uC6A9\u2764\uFE0F'
+      );
     }
   }]);
 
   return LikeButton;
 }(React.Component);
 
-var domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+ReactDOM.render(React.createElement(LikeButton, null), document.getElementById('root'));
