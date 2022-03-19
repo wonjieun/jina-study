@@ -2,23 +2,36 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>좋아용</title>
+    <title>JSX 사용하기</title>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class LikeButton extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { liked: false };
+        }
 
-    <h2>좋아용</h2>
-    <p>좋아용을 눌러볼까용?</p>
+        render() {
+          if (this.state.liked) {
+            return '좋아용을 눌렀어용~';
+          }
 
-    <!-- We will put our React component inside this div. -->
-    <div id="like_button_container"></div>
+          return <button onClick={ () => this.setState({ liked: true })}>좋아용</button>;
+        }
+      }
 
-    <!-- Load React. -->
-    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-
-    <!-- Load our React component. -->
-    <script src="like_button.js"></script>
-
+      ReactDOM.render(
+        <LikeButton />,
+        document.getElementById('root')
+      );
+    </script>
   </body>
 </html>
