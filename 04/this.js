@@ -52,7 +52,7 @@ const myClassThis = function () {
   }
 }
 const someoneNew = new myClassThis();
-someoneNew.whoAmI();
+// someoneNew.whoAmI();
 
 const someone = {
   name: 'jina',
@@ -65,11 +65,11 @@ const someone = {
 // 객체 안에 this는 자기자신을 가리킴
 
 // someone이 점 연산자를 통해 호출
-someone.whoAmI(); // -> someone
+// someone.whoAmI(); // -> someone
 
 const myWhoAmI = someone.whoAmI;
 // Window가 호출
-myWhoAmI(); // -> Window
+// myWhoAmI(); // -> Window
 
 const btn = document.getElementById('btn');
 // btn이 호출
@@ -78,7 +78,7 @@ btn.addEventListener('click', someone.whoAmI); // -> Button
 
 // bind() 함수를 이용하여 this를 명시적으로 바인딩
 const bindedWhoAmI = myWhoAmI.bind(someone);
-bindedWhoAmI(); // -> someone
+// bindedWhoAmI(); // -> someone
 btn.addEventListener('click', bindedWhoAmI); // -> someone
 
 // ========================================================================
@@ -118,8 +118,8 @@ const myObj = {
 };
 
 // myObj.setCounterThisBind();
-myObj.setCounterArrow();
-// arrow function은 this를 가지고 있지 않기 때문에
+// myObj.setCounterArrow();
+// Arrow function은 this를 가지고 있지 않기 때문에
 // 선언된 위치의 스코프에서 찾는 스코프 체인에 의해 상위 스코프의 this를 찾는다
 // 선언된 위치의 상위 스코프에서 this를 찾는다.
 
@@ -143,10 +143,24 @@ function outter() {
   };
   my2();
 }
-outter(1, 2, 3, 4);
+// outter(1, 2, 3, 4);
 
 // (2)
 const myFunc2 = (...args) => {
   console.log(args);
 }
-myFunc2(1, 2, 3);
+// myFunc2(1, 2, 3);
+
+const objectTest = {
+  name: '감자',
+  image: '🍟',
+  age: 999,
+  hello: function () {
+    console.log(this);
+  },
+  hello2: () => {
+    console.log(this);
+  }
+}
+// objectTest.hello(); // -> objectTest
+// objectTest.hello2(); // -> global object
