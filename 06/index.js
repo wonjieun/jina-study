@@ -82,7 +82,17 @@ async function handleAnswer(isCorrect) {
   }
 }
 
+function winner() {
+  console.clear();
+  const msg = `${playerName} , \nAre you a genius ?`
+
+  figlet(msg, (err, data) => {
+    console.log(gradient.pastel.multiline(data));
+  });
+}
+
 await welcome(); // top level await (node 14+)
 await askName();
 await question1();
 await question2();
+winner();
