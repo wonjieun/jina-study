@@ -19,9 +19,25 @@ async function welcome() {
 
   console.log(`
     ${chalk.bgGreen('게임방법')}
-    🚨 질문에 틀린 답을 입력하면 종료!
+    이름을 영어로 입력하세요.
+    퀴즈의 정답을 맞춰보세요.
+    🚨 틀린 답을 입력하면 종료!
     모두 맞히면 ...
-  `)
+  `);
+}
+
+async function askName() {
+  const answer = await inquirer.prompt({
+    name: 'player_name',
+    type: 'input',
+    message: '이름을 영어로 입력',
+    default() {
+      return 'jina';
+    },
+  });
+
+  playerName = answer.player_name;
 }
 
 await welcome(); // top level await (node 14+)
+await askName();
