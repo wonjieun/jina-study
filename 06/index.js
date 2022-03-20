@@ -39,5 +39,22 @@ async function askName() {
   playerName = answer.player_name;
 }
 
+async function question1() {
+  const answers = await inquirer.prompt({
+    name: 'question_1',
+    type: 'list',
+    message: '2022년 3월 20일 이슬이의 나이는?',
+    choices: [
+      '7살',
+      '8살',
+      '9살',
+      '10살',
+    ],
+  });
+
+  return answers.question_1 === '9살';
+}
+
 await welcome(); // top level await (node 14+)
 await askName();
+await question1();
