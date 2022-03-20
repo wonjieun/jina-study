@@ -52,7 +52,19 @@ async function question1() {
     ],
   });
 
-  return answers.question_1 === '9살';
+  return handleAnswer(answers.question_1 === '9살');
+}
+
+async function handleAnswer(isCorrect) {
+  const spinner = createSpinner('맞나?').start();
+  await sleep();
+
+  if (isCorrect) {
+    spinner.success({ text: `굿잡 ${playerName} 킵고잉` });
+  } else {
+    spinner.error({ text: `🚨🚨🚨 때애애애앵 🚔` });
+    process.exit(1); // 0 Success, 1 Errors (kill the scripts)
+  }
 }
 
 await welcome(); // top level await (node 14+)
