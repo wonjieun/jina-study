@@ -54,6 +54,21 @@ async function question1() {
 
   return handleAnswer(answers.question_1 === '9살');
 }
+async function question2() {
+  const answers = await inquirer.prompt({
+    name: 'question_2',
+    type: 'list',
+    message: '이슬이가 짜증내면?',
+    choices: [
+      '으르렁',
+      '크르렁',
+      '크르르',
+      '캬르르',
+    ],
+  });
+
+  return handleAnswer(answers.question_2 === '크르르');
+}
 
 async function handleAnswer(isCorrect) {
   const spinner = createSpinner('맞나?').start();
@@ -70,3 +85,4 @@ async function handleAnswer(isCorrect) {
 await welcome(); // top level await (node 14+)
 await askName();
 await question1();
+await question2();
