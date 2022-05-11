@@ -96,12 +96,23 @@ myAwait().then(result => {
 // ========================================================================
 
 // catch
-function wait(sec) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject('error!');
-    }, sec * 1000)
-  })
+// function wait(sec) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       reject('error!');
+//     }, sec * 1000)
+//   })
+// }
+
+// wait(3)
+async function myAsync() {
+  // 함수를 Promise를 반환하는 함수를 만들어준다
+  // return 'async';
+  throw 'your error';
 }
 
-wait(3)
+myAsync().then((result) => {
+  console.log(result);
+}).catch(e => {
+  console.log(e);
+});
