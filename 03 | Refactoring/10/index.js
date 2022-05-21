@@ -9,8 +9,12 @@ function plumages(birds) {
     birds.map((b) => createBird(b)).map((bird) => [bird.name, bird.plumage])
   );
 }
-function speeds(bird) {
-  return createBird(bird).airSpeedVelocity;
+function speeds(birds) {
+  return new Map(
+    birds
+      .map((b) => createBird(b))
+      .map((bird) => [bird.name, bird.airSpeedVelocity])
+  );
 }
 
 function createBird(bird) {
@@ -33,4 +37,10 @@ console.log(
     { name: '노앵무', type: '노르웨이 파랑 앵무', voltage: 2 },
   ])
 );
-console.log(speeds({ type: '아프리카 제비', numberOfCoconuts: 1 }));
+console.log(
+  speeds([
+    { name: '유제비', type: '유럽 제비' },
+    { name: '아제비', type: '아프리카 제비', numberOfCoconuts: 3 },
+    { name: '노앵무', type: '노르웨이 파랑 앵무', voltage: 2, isNailed: false },
+  ])
+);
