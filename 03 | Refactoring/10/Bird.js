@@ -29,3 +29,7 @@ export default class Bird {
     }
   }
 }
+
+export class EuropeanSwallow extends Bird {}
+export class AfricanSwallow extends Bird {}
+export class NorwegianBlueParrot extends Bird {}
