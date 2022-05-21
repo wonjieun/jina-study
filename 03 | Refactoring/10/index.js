@@ -24,5 +24,5 @@ function createBird(bird) {
   }
 }
 
-console.log(plumages({ type: '유럽 제비' }));
-console.log(speeds({ type: '유럽 제비' }));
+console.log(plumages({ type: '아프리카 제비' }));
+console.log(speeds({ type: '아프리카 제비', numberOfCoconuts: 1 }));

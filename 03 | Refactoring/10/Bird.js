@@ -4,16 +4,7 @@ export default class Bird {
   }
 
   get plumage() {
-    switch (this.type) {
-      case '유럽 제비':
-        throw '오류 발생';
-      case '아프리카 제비':
-        return this.numberOfCoconuts > 2 ? '지쳤다' : '보통이다';
-      case '노르웨이 파랑 앵무':
-        return this.voltage > 100 ? '그을렸다' : '예쁘다';
-      default:
-        return '알 수 없다';
-    }
+    return '알 수 없다';
   }
 
   get airSpeedVelocity() {
@@ -35,5 +26,13 @@ export class EuropeanSwallow extends Bird {
     return '보통이다';
   }
 }
-export class AfricanSwallow extends Bird {}
-export class NorwegianBlueParrot extends Bird {}
+export class AfricanSwallow extends Bird {
+  get plumage() {
+    return this.numberOfCoconuts > 2 ? '지쳤다' : '보통이다';
+  }
+}
+export class NorwegianBlueParrot extends Bird {
+  get plumage() {
+    return this.voltage > 100 ? '그을렸다' : '예쁘다';
+  }
+}
